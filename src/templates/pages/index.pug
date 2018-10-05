@@ -32,11 +32,23 @@ block content
                 ul(class="events__list")
                     each event in events
                         li(class="events__item events__item--size_"+event.size)
-                            div.events__title 
-                                p.events__title-text #{event.title}
-                            div(class="events__info events__info--"+event.size)
-                                span.events__source #{event.source}
-                                span.events__time #{event.time}
+                            - var isCritical = event.type == 'critical';
+                            div(class= isCritical ? 'events__top events__top--critical' : "events__top")
+                                div(class="events__title")
+                                    div(class="events__title-icon events__title-icon--"+event.icon) 
+                                    p.events__title-text #{event.title}
+                                div(class="events__info events__info--"+event.size)
+                                    span.events__source #{event.source}
+                                    span.events__time #{event.time}
+                            if event.description        
+                                div(class= isCritical ? 'events__bottom events__bottom--critical' : "events__bottom")
+                                    p(class="events__description events__description--"+event.size) #{event.description}
+                                    case event.icon
+                                        when "cam"
+                                        when "stats"
+                                            div.events__content
+
+
 
         footer.footer
             ul.footer__list
