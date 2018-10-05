@@ -1,5 +1,7 @@
 const gulp = require('gulp');
+const fs = require('fs');
 const pug = require('gulp-pug');
+const data = require('gulp-data');
 const path = require('path');
 
 const sass = require('gulp-sass');
@@ -36,8 +38,12 @@ const paths = {
 
 // pug
 function templates() {
+  var dataFile = 'src/templates/pages/events.json';
   return gulp
     .src(paths.templates.pages)
+    .pipe(data(function(file){
+      return JSON.parse(fs.readFileSync(dataFile));
+    }))
     .pipe(pug({ pretty: true }))
     .pipe(gulp.dest(paths.root));
 }

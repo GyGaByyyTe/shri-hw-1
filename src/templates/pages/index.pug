@@ -2,6 +2,11 @@ extends ../template
 
 block variables
     - var title = 'Яндекс Дом'
+    - var title = 'Яндекс Дом'
+    - var title = 'Яндекс Дом'
+    - var title = 'Яндекс Дом'
+
+
 
 block content
     .wrapper#wrapper
@@ -21,8 +26,17 @@ block content
                                 a(href="#").menu__link Устройства
                             li.menu__item 
                                 a(href="#").menu__link Сценарии
-            
+
             section.events
+                h1.events__header Лента событий
+                ul(class="events__list")
+                    each event in events
+                        li(class="events__item events__item--size_"+event.size)
+                            div.events__title 
+                                p.events__title-text #{event.title}
+                            div(class="events__info events__info--"+event.size)
+                                span.events__source #{event.source}
+                                span.events__time #{event.time}
 
         footer.footer
             ul.footer__list
