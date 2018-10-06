@@ -43,7 +43,7 @@
 }
 
 @mixin item--icon-before($top, $translateX, $translateY) {
-  content: '';
+  content: "";
   position: absolute;
   top: $top;
   transform: translate($translateX, $translateY);
@@ -60,8 +60,23 @@
     @content;
   }
 }
+@mixin for-phone-up {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+@mixin for-phone-up-to-desktop {
+  @media (min-width: 640px) and (max-width: 1024px) {
+    @content;
+  }
+}
 @mixin for-desktop-up {
   @media (min-width: 1024px) {
+    @content;
+  }
+}
+@mixin for-wide-up {
+  @media (min-width: 1280px) {
     @content;
   }
 }
