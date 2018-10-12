@@ -6,23 +6,8 @@ block variables
 block content
     .wrapper#wrapper
         .content#content
-            header.header.container
-                .header__left
-                    a(href="#").logo
-                .header__right
-                    .hamburger                
-                        a(href="#").hamburger__link Меню
-                            .hamburger__line    
-                    nav.menu
-                        ul.menu__list
-                            li.menu__item
-                                a(href="/index.html").menu__link Сводка
-                            li.menu__item 
-                                a(href="#").menu__link Устройства
-                            li.menu__item 
-                                a(href="#").menu__link Сценарии
-                            li.menu__item.menu__item--active 
-                                a(href="/video.html").menu__link Видео
+            include ../components/header.pug
+            +header(3)   
 
             section.multimedia
                 h1.multimedia__header Видео-каналы
@@ -36,17 +21,8 @@ block content
                     div(class="multimedia__video-frame")
                         video(id="video4" class="multimedia__video" controls mute)
 
-        footer.footer
-            ul.footer__list
-                li.footer__item
-                    a(href="#").footer__link Помощь
-                li.footer__item
-                    a(href="#").footer__link Обратная связь
-                li.footer__item                
-                    a(href="#").footer__link Разработчикам
-                li.footer__item
-                    a(target="_blank" rel="nofollow noopener" href="https://gygabyyyte.github.io/shri-hw-1/license.pdf").footer__link Условия использования
-            .footer__copyright &copy; 2001-2018 OOO "Яндекс"                                  
+        include ../components/footer.pug
+        +footer                                            
 
     script(src="//cdn.jsdelivr.net/npm/hls.js@latest" defer)
     script(src='./video.js' defer)
